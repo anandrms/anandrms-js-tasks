@@ -36,8 +36,6 @@
      {
     console.log("The number is odd.");
      }
-
-
     const number = prompt("Enter a number: ");
     const result = (number % 2  == 0) ? "even" : "odd";
     console.log(`The number is ${result}.`);
@@ -66,4 +64,319 @@
 
 <---------------------------------------------->
 
-//
+comparing two json object
+
+let obj1 ={ name: "Person 1", age: 5 };
+let obj2 = { age: 5, name: "Person 1" };
+
+let obj1String = JSON.stringify(obj1);
+let obj2String = JSON.stringify(obj2);
+
+obj1String = JSON.stringify(JSON.parse(obj1String), Object.keys);
+obj2String = JSON.stringify(JSON.parse(obj2String), Object.keys);
+if (obj1String === obj2String) {
+    console.log("same properties");
+} else {
+    console.log("not same properties");
+}
+
+<--------------------------------------------->
+
+finding odd number using function
+
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const Odd = function(arr) {
+    for (let num of arr) {
+        if (num % 2 !== 0) {
+            console.log(num);
+        }
+    }
+};
+Odd(numbers);
+
+<--------------------------------------------->
+
+finding odd number using immediate invoke function (IIF)
+
+(function(arr) {
+    for (let num of arr) {
+        if (num % 2 !== 0) {
+            console.log(num);
+        }
+    }
+})
+([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+
+<--------------------------------------------->
+
+odd number
+
+// Anonymous function
+let printOddNumbers = function(arr) {
+    for (let num of arr) {
+        if (num % 2 !== 0) {
+            console.log(num);
+        }
+    }
+};
+
+// IIFE
+(function(arr) {
+    for (let num of arr) {
+        if (num % 2 !== 0) {
+            console.log(num);
+        }
+    }
+})([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+
+
+<--------------------------------------------->
+
+Convert all the strings to title caps in a string array:
+
+// Anonymous function
+let convertToTitleCaps = function(arr) {
+    return arr.map(str => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase());
+};
+
+// IIFE
+let titleCapsArray = (function(arr) {
+    return arr.map(str => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase());
+})(["hello", "world", "javascript"]);
+console.log(titleCapsArray);
+
+<--------------------------------------------->
+
+Sum of all numbers in an array:
+
+// Anonymous function
+let sumArray = function(arr) {
+    return arr.reduce((acc, curr) => acc + curr, 0);
+};
+
+// IIFE
+let totalSum = (function(arr) {
+    return arr.reduce((acc, curr) => acc + curr, 0);
+})([1, 2, 3, 4, 5]);
+console.log(totalSum);
+
+<--------------------------------------------->
+
+Return all the prime numbers in an array:
+
+// Anonymous function
+let getPrimeNumbers = function(arr) {
+    return arr.filter(num => {
+        if (num < 2) return false;
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i === 0) return false;
+        }
+        return true;
+    });
+};
+
+// IIFE
+let primeNumbers = (function(arr) {
+    return arr.filter(num => {
+        if (num < 2) return false;
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i === 0) return false;
+        }
+        return true;
+    });
+})([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+console.log(primeNumbers);
+
+<---------------------------------------------->
+
+Return all the palindromes in an array:
+
+let getPalindromes = function(arr) {
+    return arr.filter(str => str === str.split('').reverse().join(''));
+};
+
+<---------------------------------------------->
+palindrome
+
+let allan = "malayalam";
+if (allan === allan.split('').reverse().join('')) 
+{
+  console.log("yes");
+} 
+else 
+{
+  console.log("no");
+}
+
+<---------------------------------------------->
+
+Return median of two sorted arrays of the same size:
+
+let findMedianSortedArrays = function(nums1, nums2) {
+    let merged = nums1.concat(nums2).sort((a, b) => a - b);
+    let mid = Math.floor(merged.length / 2);
+    if (merged.length % 2 === 0) {
+        return (merged[mid - 1] + merged[mid]) / 2;
+    } else {
+        return merged[mid];
+    }
+};
+Remove duplicates from an array:
+
+let removeDuplicates = function(arr) {
+    return [...new Set(arr)];
+};
+Rotate an array by k times:
+
+let rotateArray = function(arr, k) {
+    let n = arr.length;
+    k %= n;
+    reverse(arr, 0, n - 1);
+    reverse(arr, 0, k - 1);
+    reverse(arr, k, n - 1);
+    return arr;
+};
+
+function reverse(arr, start, end) {
+    while (start < end) {
+        let temp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = temp;
+        start++;
+        end--;
+    }
+}
+
+<--------------------------------------------->
+
+Do the below programs in arrow functions.
+
+Print odd numbers in an array:
+
+const printOddNumbers = arr => arr.forEach(num => {
+    if (num % 2 !== 0) {
+        console.log(num);
+    }
+});
+
+// Example usage:
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+printOddNumbers(numbers);
+
+<--------------------------------------------->
+
+Convert all the strings to title caps in a string array:
+
+const convertToTitleCaps = arr => arr.map(str => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase());
+
+// Example usage:
+const strings = ["hello", "world", "javascript"];
+const titleCapsStrings = convertToTitleCaps(strings);
+console.log(titleCapsStrings);
+
+Sum of all numbers in an array:
+
+const sumOfNumbers = arr => arr.reduce((acc, curr) => acc + curr, 0);
+
+// Example usage:
+const numbers = [1, 2, 3, 4, 5];
+const sum = sumOfNumbers(numbers);
+console.log(sum);
+
+<--------------------------------------------->
+
+Return all the prime numbers in an array:
+
+const isPrime = num => {
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) {
+            return false;
+        }
+    }
+    return num > 1;
+};
+
+const getPrimeNumbers = arr => arr.filter(num => isPrime(num));
+
+// Example usage:
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const primes = getPrimeNumbers(numbers);
+console.log(primes);
+
+<--------------------------------------------->
+
+Return all the palindromes in an array:
+
+const isPalindrome = str => {
+    const reversedStr = str.split('').reverse().join('');
+    return str === reversedStr;
+};
+
+const getPalindromes = arr => arr.filter(str => isPalindrome(str));
+
+// Example usage:
+const words = ["level", "hello", "racecar", "world"];
+const palindromes = getPalindromes(words);
+console.log(palindromes);
+
+<---------------------------------------------->
+//vowels
+
+let s = "Allan Is A good boy"
+let c = s.toLowerCase();
+for (i=0; i<=c.length; i++){
+d=c.charAt(i)
+if (d=="a"|| d=="e" || d=="i" || d=="o" || d=="u")
+{
+  console.log(d)
+  }
+}
+
+<--------------------------------------------->
+
+// const val1 = 3;
+// const val2 = 4;
+// console.log(val1 + val2)
+
+// const allan = [10, 20, 30, 60, 50, 40];
+// const anand = allan.sort(function(a, b) {
+//     return a - b;
+// });
+// console.log(anand[anand.length - 1]);
+
+// const allan ="leve";
+// if(allan === allan.split("").reverse().join(""))
+// {
+//     console.log(allan,"is palindrome word")
+// }
+// else
+//  {
+//      console.log("not a palindrome")
+//  }
+
+// const allan="string";
+// console.log(allan.split("").reverse().join(""))
+
+// const allan = [1,2,3,4,5,6,7,8,9,10];
+// for (let x=0; x<=10; x++){
+// if(allan / 2 ==0)
+// {
+//     console.log(allan)
+// }
+// }
+
+// const num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// function allan(array) {
+//     return array.filter(num => num % 2 === 0);
+// }
+// const even = allan(num);
+// console.log(even);
+
+// let a = 0, b = 1, c;
+// for (let i = 0; i <= 6; i++) 
+// {
+// console.log(a);
+// c = a + b;
+// a = b;
+// b = c;
+// }
